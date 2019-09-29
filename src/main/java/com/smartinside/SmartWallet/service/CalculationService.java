@@ -1,4 +1,6 @@
-package com.smartinside.SmartWallet;
+package com.smartinside.SmartWallet.service;
+
+import com.smartinside.SmartWallet.ItemDTO;
 
 import java.util.List;
 

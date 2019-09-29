@@ -12,5 +12,6 @@ public class ItemDTO {
     String imageName;
     String descr;
     String operation;
+    //move this to transaction object
     String currency;
 }

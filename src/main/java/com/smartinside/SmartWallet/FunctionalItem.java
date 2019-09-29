@@ -5,7 +5,7 @@ import java.util.function.Function;
 public interface FunctionalItem extends Function<Double, Double> {
 
   static FunctionalItem of(ItemDTO item) {
-    if ("plus".equalsIgnoreCase(item.getOperation())) {
+    if (Constants.PLUS_OPERATION.equalsIgnoreCase(item.getOperation())) {
       return (x) -> x + parseNumberFromImage(item);
     }
     return (x) -> x - parseNumberFromImage(item);
