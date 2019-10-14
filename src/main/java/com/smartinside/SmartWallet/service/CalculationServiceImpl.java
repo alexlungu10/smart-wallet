@@ -3,6 +3,7 @@ package com.smartinside.SmartWallet.service;
 import com.smartinside.SmartWallet.FunctionalItem;
 import com.smartinside.SmartWallet.ItemDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,7 +25,7 @@ public class CalculationServiceImpl implements CalculationService {
   @Override
   public double getBalanceFromItemDTOList(List<ItemDTO> itemList) {
     final List<FunctionalItem> functionalItemList =
-        itemList.stream().map(item -> FunctionalItem.of(item)).collect(Collectors.toList());
+        itemList.stream().map(item -> FunctionalItem.of(item  )).collect(Collectors.toList());
 
     final Optional<FunctionalItem> totalFunction =
         functionalItemList.stream().reduce((t, u) -> u.composeFunctionalItem(t));
@@ -33,4 +34,12 @@ public class CalculationServiceImpl implements CalculationService {
       //TODO take Currency from transaction DTO, or state that all the transactions are made in same currency
       return convertorService.getAmountInEuro( totalAmountFromClient, itemList.get(0).getCurrency());
   }
+
+
+//    private Double parseNumberFromImage(String imageName) {
+//        final RestTemplate restTemplate = new RestTemplate();
+//        final String stringNumber = restTemplate.getForObject("http://127.0.0.1:5000/getNumberFromImage/"+imageName, String.class);
+//    System.out.println(String.format("stringNumber: %s",stringNumber));
+//        return null;
+//    }
 }

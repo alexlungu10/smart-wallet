@@ -30,13 +30,15 @@ public class CalculationServiceTest {
                 ItemDTO.builder().imageName(Constants.TWO_JPG).operation(PLUS).currency(GBP_CURRENCY).build(),
                 ItemDTO.builder().imageName(Constants.THREE_JPG).operation(PLUS).currency(GBP_CURRENCY).build(),
                 ItemDTO.builder().imageName(Constants.FOUR_JPG).operation(PLUS).currency(GBP_CURRENCY).build(),
-                ItemDTO.builder().imageName(Constants.SEVEN_JPG).operation(MINUS).currency(GBP_CURRENCY).build()));
+                ItemDTO.builder().imageName(Constants.SEVEN_JPG).operation(MINUS).currency(GBP_CURRENCY).build(),
+                    ItemDTO.builder().imageName(Constants.ONE_JPG).operation(MINUS).currency(GBP_CURRENCY).build()
+                    ));
 
     // 10-7=3
-    Assert.assertEquals(3, balanceFromItemDTOList, 0);
+    Assert.assertEquals(2, balanceFromItemDTOList, 0);
 
   }
-  @Test
+ /* @Test
     public void test2(){
       final ItemDTO itemDTO = ItemDTO.builder().imageName("aaa").build();
       Function<ItemDTO,String> f=(ItemDTO i)->{
@@ -47,5 +49,5 @@ public class CalculationServiceTest {
       System.out.println(String.format("new object getImageName: %s", itemDTO.getImageName()));
       Map<Integer, List<Product>> collectorMapOfLists = productList.stream()
               .collect(Collectors.groupingBy(Product::getPrice));
-  }
+  }*/
 }
